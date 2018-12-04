@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>What Quarter is it?</title>
+</head>
+<body>
+	<h1>We are in quarter <span id="quarter"></span></h1>
+</body>
+<script type="text/javascript">
+	const currentQuarter = () => {
+		const currMonth = new Date().getMonth();
+		let currQuarter;
+		// Q1: May - July
+		if (currMonth >= 4 && currMonth <= 6) {
+			currQuarter = 1;
+		}
+		// Q2: August - October
+		if (currMonth >= 7 && currMonth <= 9) {
+			currQuarter = 2;
+		}
+		// Q3: November - January
+		if (currMonth >= 10 || currMonth == 0) {
+			currQuarter = 3;
+		}
+		// Q4: February - April
+		if (currMonth >= 1 && currMonth <= 3) {
+			currQuarter = 4;
+		}
+		return currQuarter;
+	}
+	document.getElementById('quarter').innerHTML = currentQuarter();
+</script>
+</html>
