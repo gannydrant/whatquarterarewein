@@ -2,9 +2,15 @@
 <html>
 <head>
 	<title>What Quarter is it?</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-	<h1 style="text-align:center">We are in Q<span id="quarter"></span></h1>
+	<div class="container">
+		<span class="hmm">🤔</span>
+		<p class="question">What Quarter is it, you ask?</p>
+		<p class="answer">Q<span id="quarter"></span></p>
+	</div>
 </body>
 <script type="text/javascript">
 	const currentQuarter = () => {
