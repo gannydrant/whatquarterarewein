@@ -7,16 +7,24 @@
 </head>
 <body>
 	<div class="container">
-    <div class="card">
-		<span class="hmm">🤔</span>
-		<p class="question">What Quarter is it, you ask?</p>
-		<p class="answer">Q<span id="quarter"></span></p>
-	</div>
-  </div>
+	    <div class="card">
+			<span class="hmm">🤔</span>
+			<p class="question">What quarter is it, you ask?</p>
+			<p class="answer">Q<span id="quarter"></span></p>
+			<div class="schedule">
+				<div>Q1<br/> 5/1 - 7/31</div>
+				<div>Q2<br/> 8/1 - 10/31</div>
+				<div>Q3<br/> 11/1 - 1/31</div>
+				<div>Q4<br/> 2/1 - 4/30</div>
+			</div>
+		</div>
+    </div>
 </body>
 <script type="text/javascript">
-	const currentQuarter = () => {
-		const currMonth = new Date().getMonth();
+	const YEAR_OFFSET = 2000;
+	const today = new Date();
+	const currentQuarter = (date) => {
+		const currMonth = date.getMonth();
 		let currQuarter;
 		// Q1: May - July
 		if (currMonth >= 4 && currMonth <= 6) {
@@ -36,6 +44,19 @@
 		}
 		return currQuarter;
 	}
-	document.getElementById('quarter').innerHTML = currentQuarter();
+
+	const currentFiscalYear = (date) => {
+		const currYear = date.getFullYear();
+		const currMonth = date.getMonth();
+		let currFiscalYear;
+		if (currMonth <= 3) {
+			currFiscalYear = currYear;
+		} else {
+			currFiscalYear = currYear + 1;
+		}
+		return currFiscalYear - YEAR_OFFSET;
+	}
+
+	document.getElementById('quarter').innerHTML = `${currentQuarter(today)}<br /> FY${currentFiscalYear(today)}`;
 </script>
 </html>
